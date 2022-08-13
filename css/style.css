@@ -9,8 +9,8 @@ body{
 }
 
 .canvas{
-    width: 50vw;
-    height: 60vh;
+    width: 800px;
+    height: 350px;
     background-color: white;
     border-radius: 20px;
     margin-top:10vh;
@@ -35,8 +35,14 @@ body{
 
 .control_colors .control_color{
     width: 50px;
+    cursor: pointer;
     height: 50px;
     margin: 0 3px;
     border-radius: 20px;
     box-shadow: 0 6px 6px rgba(50, 50, 100, 0.15), 0 2px 3px rgba(50, 50, 100, 0.15);
 }
+
+
+
+
+
