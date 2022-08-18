@@ -1,7 +1,13 @@
 const canvas =document.querySelector("canvas");
 const lineWidth =document.getElementById("line-width");
 const allColor =document.getElementById("allcolor");
+const jsMode =document.getElementById("jsMode");
 const colorOption =Array.from(document.getElementsByClassName("control_color"));
+const buttonClear = document.getElementById("jsClear");
+const buttonEraser = document.getElementById("jsEraser");
+
+const canvasHeight = 1000;
+const canvasWidth  = 1000;
 
 //3d or 2d
 const ctx = canvas.getContext("2d");
@@ -46,6 +52,8 @@ ctx.lineWidth = 1;
 // }
 
 let isPainting = false;
+let isFilling = false;
+
 function onClickMove(e){
     if (isPainting) {
         ctx.lineTo(e.offsetX,e.offsetY);
@@ -82,6 +90,40 @@ function onClickColor(e){
     color.value = colorValue;
 }
 
+function onClickMode(e){
+    
+    if (isFilling) {
+
+        isFilling=false;
+        jsMode.innerHTML="Fill";
+
+    }else{
+
+        isFilling=true;
+        jsMode.innerHTML="Draw"
+    }
+
+}
+
+function onFillCanvas(e){
+    
+    if (isFilling) {
+    ctx.fillRect(0,0,canvasWidth,canvasHeight);
+    }
+
+}
+
+
+function onClear(){
+    ctx.fillStyle="white";
+    ctx.fillRect(0,0,canvasWidth,canvasHeight);
+}
+
+function onEraser(){
+    ctx.strokeStyle = "white";
+    isFilling = false;
+}
+
 
 // canvas.addEventListener("mousemove", onClickCanvas);
 canvas.addEventListener("mousemove", onClickMove);
@@ -95,3 +137,9 @@ allColor.addEventListener("change",onColorChange)
 colorOption.forEach((color)=>{
     color.addEventListener("click",onClickColor);
 });
+
+jsMode.addEventListener("click",onClickMode);
+canvas.addEventListener("mousedown", onFillCanvas);
+
+buttonEraser.addEventListener("click",onEraser);
+buttonClear.addEventListener("click",onClear);
