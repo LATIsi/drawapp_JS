@@ -6,6 +6,7 @@ const colorOption =Array.from(document.getElementsByClassName("control_color"));
 const buttonClear = document.getElementById("jsClear");
 const buttonEraser = document.getElementById("jsEraser");
 
+const inputFile = document.getElementById("file");
 const canvasHeight = 1000;
 const canvasWidth  = 1000;
 
@@ -13,7 +14,11 @@ const canvasWidth  = 1000;
 const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 400;
+
+
+//html이 먼저 load 되어서 값을 가져올수있음.
 ctx.lineWidth = lineWidth.value;
+
 
 
 // // ctx.fillRect(0,0,800,200);
@@ -125,6 +130,22 @@ function onEraser(){
 }
 
 
+function onFileChange(e){
+    const file = e.target.files[0];
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+
+    image.src = url;
+
+    image.onload = function(){
+        ctx.drawImage(image,0,0,canvasWidth,canvasHeight);
+        // 가져온 이미지가 있어서 새로운 이미지를 다시 불러오고싶을때.
+        inputFile.value= null;
+    }
+
+}
+
+
 // canvas.addEventListener("mousemove", onClickCanvas);
 canvas.addEventListener("mousemove", onClickMove);
 canvas.addEventListener("mousedown", startDraw);
@@ -143,3 +164,6 @@ canvas.addEventListener("mousedown", onFillCanvas);
 
 buttonEraser.addEventListener("click",onEraser);
 buttonClear.addEventListener("click",onClear);
+inputFile.addEventListener("change", onFileChange);
+
+
