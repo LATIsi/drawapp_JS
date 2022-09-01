@@ -25,7 +25,7 @@ const canvasWidth  = 1000;
 const ctx = canvas.getContext("2d");
 
 canvas.width = 800;
-canvas.height = 400;
+canvas.height = 550;
 
 //폰트
 let font_Alumni = new FontFace('Alumni Sans Pinstripe','url("https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe&display=swap")');

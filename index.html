@@ -9,6 +9,7 @@
   </head>
   <body>
     <div id="jsColors" class="control_colors">
+      <input id="allcolor" type="color"  class="control_color" />
       <div
         class="control_color"
         style="background-color: black"
@@ -54,17 +55,20 @@
         style="background-color: darkorchid"
         data-color="#9932cc"
       ></div>
+
     </div>
+
     <canvas id="jsCanvas" class="canvas"></canvas>
     <div class="btns">
+      <span>Pencil Width</span>
       <input id="line-width" type="range" min="1" max="5" value="3" step="0.2" />
-      <input id="allcolor" type="color" />
       <div class="control">
         <div class="controls_btn">
           <button id="jsMode">Fill</button>
           <button id="jsEraser"> Eraser </button>
           <button id="jsClear"> Clear All </button>
           <div id="font_div">
+              <span>Text</span>
               <input id="fontSize" type="range" min="8" max="50" value="12" step="1" />
               <select id="fontSelect">
                   <option value="Alumni">Alumni Sans Pinstripe</option>
@@ -73,10 +77,13 @@
                   <option value="Silkscreen">Silkscreen</option>
               </select>
               <input id="fontColor" type="color" />
+              <input type="text" id="text" placeholder="텍스트를 입력 캔버스 더블클릭"/>
           </div>
-          <input type="text" id="text" placeholder="텍스트를 쓰고싶다면 캔버스를 더블클릭해주세요"/>
-          <input type="file" accept="image/*" id="file" value="이미지 불러오기" />
-          <button id="jsSave">Save</button>
+          <label for="file">
+             이미지 추가하기
+             <input type="file" accept="image/*" id="file" value="이미지 불러오기" />
+            </label>
+           <button id="jsSave"> Save</button>
         </div>
       </div>
     </div>
